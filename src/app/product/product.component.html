@@ -1,0 +1,44 @@
+<app-category></app-category>
+<h3 *ngIf="products else noProduct">{{title}}</h3>
+<form>
+    <div >
+    
+     
+      <input class="form-control"  
+      id="productName" 
+      [(ngModel)]="filterText" name="first"
+      
+      placeholder="Ne aradın?"
+      >
+      <small id="productName2" class="form-text text-muted"><strong></strong></small>
+      
+    </div>
+
+
+<div class="row">
+    <ng-template #noProduct>
+        <div  class="alert alert-primary" role="alert">
+            Bu katagoride ürün yoktur
+        </div>
+    </ng-template>
+    <div *ngFor="let product of products | productFilter:filterText; let i = index" class="productbox" style="width: 18rem;">
+        <img [src]="product.imageUrl" height="240" width="350" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}} {{product.price |currency:'₺'}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            
+            <button type="submit" class="fav btn btn-outline-success" (click)="fav(product)"><svg id="i-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"> <path d="M4 16 C1 12 2 6 7 4 12 2 15 6 16 8 17 6 21 2 26 4 31 6 31 12 28 16 25 20 16 28 16 28 16 28 7 20 4 16 Z" /> </svg></button>
+
+            <button type="button" class="compare btn btn-outline-info" (click)="compare(product, i)" ><svg id="i-eye" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="21" height="21" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"> <circle cx="17" cy="15" r="1" /> <circle cx="16" cy="16" r="6" /> <path d="M2 16 C2 16 7 6 16 6 25 6 30 16 30 16 30 16 25 26 16 26 7 26 2 16 2 16 Z" /> </svg></button>
+
+            <button type="button" class="delete btn btn-outline-danger" (click)="delete(product.id)" ><svg id="i-trash" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"> <path d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6" /> </svg></button>
+           
+  
+            
+            
+        </div>
+    </div>
+
+</div>
+
+</form>

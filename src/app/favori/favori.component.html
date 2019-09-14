@@ -1,0 +1,34 @@
+
+<form >
+  <div >
+  
+   
+    <input class="form-control"  
+    id="productName" 
+    [(ngModel)]="filterText" name="first"
+    
+    placeholder="Ne aradın?"
+    >
+    <small id="productName2" class="form-text text-muted"><strong></strong></small>
+    
+  </div>
+
+<div class="row">
+  <ng-template #noFavori>
+      <div  class="alert alert-primary" role="alert">
+          Favorin Yok
+      </div>
+  </ng-template>
+  <div *ngFor="let favori of favories | productFilter:filterText;" class="productbox" style="width: 18rem;">
+      <img [src]="favori.imageUrl" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">{{favori.name}} {{favori.price |currency:'₺'}}</h5>
+          <p class="card-text">{{favori.description}}</p>
+          <button type="submit" class="btn btn-outline-danger" (click)="delete(favori.id)">Sil</button>
+          
+      </div>
+  </div>
+
+</div>
+
+</form>

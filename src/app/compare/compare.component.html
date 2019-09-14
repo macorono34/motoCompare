@@ -1,0 +1,25 @@
+<form >
+  <div class="row">
+    <ng-template #noCompare>
+        <div  class="alert alert-primary" role="alert">
+            Karsılaştırcak motosiklet yok
+        </div>
+    </ng-template>
+  </div>
+  <div class="row">
+  <div *ngFor="let compare of compare" class="card">
+      <img class="md-avatar" height="240" width="350" [src]="compare.imageUrl">
+      <div class="card-body">
+        <h5 class="card-title">{{compare.name}}</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{compare.description}}</li>
+        <li class="list-group-item">{{compare.price |currency:'₺'}}</li>
+        <li class="list-group-item">{{compare.history}}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link" [attr.href]="compare.link"><svg id="i-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="21" height="21" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"> <path d="M10 2 L10 30 24 16 Z" /> </svg></a>
+      </div>
+    </div>
+  </div>
+</form>

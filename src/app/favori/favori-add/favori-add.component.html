@@ -1,0 +1,12 @@
+<h3>yeni </h3>
+<form  (ngSubmit)="add()">
+            <div class="form-group">
+                    <select class="form-group" #name="ngModel" [(ngModel)]="model.name" required id="name" name="name"
+                    #price="ngModel" [(ngModel)]="model.price" required id="price" name="price">
+                        <option *ngFor="let product of products" [value]="product.name">"{{product.name}}"--"{{product.description}}" </option>
+                       
+                </select>
+                </div>
+                <button type="submit" class="btn btn-primary"> Favoriye ekle
+                     </button>
+</form>

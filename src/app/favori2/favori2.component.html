@@ -1,0 +1,16 @@
+ <div class="nav-scroller py-1 mb-2">
+        <nav class="nav d-flex justify-content-between" >
+          <a  *ngFor="let newfavori of newfavori" 
+          [class.selected]="newfavori ===  selectFavori"
+          (click)="onSelect(newfavori)" class="p-2 text-muted" >{{newfavori.name}}</a>
+        </nav>
+      </div>
+  <div *ngIf=" selectFavori">
+     <h2>{{ selectFavori.name | uppercase}} Details</h2>
+        <div>
+          <label>
+              <img [src]="selectFavori.imageUrl" class="card-img-top" alt="...">
+          </label>
+        </div>
+      </div>
+     
